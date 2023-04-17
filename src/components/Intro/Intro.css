@@ -1,0 +1,22 @@
+@font-face{
+    font-family: 'NunitoSans Bold';
+    src: url("./src/assets/fonts/NunitoSans-Bold.ttf");
+}
+
+#intro {
+    width: 600px;
+    height: 500px;
+    /* border:solid 1px black; */
+}
+
+h1 {
+    line-height: 120%;
+    font-family:'NunitoSans Bold';
+    font-size: 300%;
+    margin-top: 0;
+    margin-bottom: 0;
+}
+
+p {
+    margin-top:21;
+}

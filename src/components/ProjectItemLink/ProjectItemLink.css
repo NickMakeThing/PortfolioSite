@@ -1,0 +1,19 @@
+.project-item-link{
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    width:25px;
+    height:25px;
+    border-top-left-radius:5px;
+    border-top-right-radius:5px;
+    cursor:pointer;
+    opacity:0.7;
+}
+
+.project-item-link:hover{
+    opacity:1;
+}
+
+.link-image{
+    width:90%;
+}

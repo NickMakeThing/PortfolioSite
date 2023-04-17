@@ -1,0 +1,51 @@
+.project-item{
+    height:210px;
+    width:210px;
+    display:flex;
+    flex-direction: column;
+    justify-content:center;
+    align-items:center;
+    transition: height 0.3s, width 0.3s;
+    /* border:1px solid black; */
+    border-radius:10px;
+    text-align:center;
+    position:relative;
+    overflow:hidden;
+    cursor:pointer;
+}
+
+.project-thumbnail{ 
+    position:absolute;
+    height:100%;
+    width:100%;
+    transition: filter 0.14s;
+}
+
+.project-thumbnail:hover{
+    filter:blur(3px);
+}
+
+.project-name{
+    width:100%;
+    height:22px;
+    transition: opacity 0.3s, width 0.3s, height 0.3s;
+    transition-delay: 0.05s;
+    background:rgba(49,51,56,0.5);
+    z-index:1;
+    pointer-events:none;
+}
+/* .project-about{
+    width:70%;
+    height:70%;
+    transition: display 0.3s;
+    background:rgba(49,51,56,0.5);
+    z-index:1;
+    pointer-events: none;
+} */
+.project-links{
+    display:flex;
+    width:100%;
+    justify-content:center;
+    position:absolute;
+    bottom:0px;
+}
