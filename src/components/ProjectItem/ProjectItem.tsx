@@ -9,21 +9,23 @@ type propTypes = { //use context or put in file in same folder and import
   about : string,
   thumbnail ?: string,
   expandedItem : string | null,
-  setExpandedItem : React.Dispatch<React.SetStateAction<string | null>>
+  setExpandedItem : React.Dispatch<React.SetStateAction<string | null>>,
+  containerDimensions : DOMRect //need to change
 }
 /*
 todo:
-  + when window is large, the expand animations do some wonkey things because the divs go back to first line when they shrink
-      also theres the gap on theleft is still there on any one thats clicked except for the first
+ 
 */
 function ProjectItem(props: propTypes) {
   const [nameOpacity, setNameOpacity] = useState<React.CSSProperties>({opacity:0})
-  const nameStyle : React.CSSProperties = {...nameOpacity, width:'', height:'',transitionDelay:''}
-  const itemStyle : React.CSSProperties = {width:'',height:''}
-  const aboutStyle : React.CSSProperties = {display:'none'} // try making this state and see if it causes extra render
-  const backgroundStyle : React.CSSProperties = {filter:''}
+  const nameStyle : React.CSSProperties = {...nameOpacity}
+  const itemStyle : React.CSSProperties = {}
+  const aboutStyle : React.CSSProperties = {display:'none'}
+  const backgroundStyle : React.CSSProperties = {}
   const thumbnailRef = useRef<HTMLImageElement>(null!)
-  const clickHandle = () =>{
+  const itemRef = useRef<HTMLImageElement>(null!)
+
+  const clickHandle = () =>{//can move this up to parent
     if (props.expandedItem){
       props.setExpandedItem(null)
     } else {
@@ -48,13 +50,21 @@ function ProjectItem(props: propTypes) {
 
   if (props.expandedItem){
     if (props.expandedItem == props.name){
-      aboutStyle.display = 'block'
+      let itemLeft = itemRef.current.getBoundingClientRect().left
+      let itemTop = itemRef.current.getBoundingClientRect().top
+      let containerLeft = props.containerDimensions.left
+      let containerTop = props.containerDimensions.top
+      if(itemTop > containerTop){
+        itemStyle.top = -30
+      }
+      itemStyle.left = containerLeft - itemLeft
       itemStyle.width = '450px'
       itemStyle.height = '450px'
+      itemStyle.zIndex = 100;
       nameStyle.transitionDelay = '0.3s'
-      // nameStyle.width = '70%'
       nameStyle.height = '70%'
       nameStyle.opacity = 1
+      aboutStyle.display = 'block'
     } else {
       itemStyle.width = '0px'
       itemStyle.height = '0px'
@@ -62,7 +72,7 @@ function ProjectItem(props: propTypes) {
   }
 
   return (
-    <div className='project-item' style={itemStyle}>
+    <div className='project-item' style={itemStyle} ref={itemRef}>
         <img 
           className='project-thumbnail' 
           src={props.thumbnail} 
