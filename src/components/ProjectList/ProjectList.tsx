@@ -8,63 +8,60 @@ import './ProjectList.css'
 
 function ProjectList() {
   const [expandedItem,setExpandedItem] = useState<string | null>(null)
-  const [containerDimensions,setContainerDimensions] = useState<DOMRect | null>(null)
-  const containerElement = useRef<HTMLImageElement>(null!)
-
-  useEffect(()=>{
-    setContainerDimensions(containerElement.current.getBoundingClientRect())
-    //i dont like how this means an extra render is required to render the items
-  },[])  
-
+  const [containerStyle, setContainerStyle] = useState<React.CSSProperties>({})
   const about = {
-    blog:'',
-    lightbulb:'',
-    devops:'',
-    portfolio:'',
+    blog:'About section goes here.',
+    lightbulb:'About section goes here.',
+    devops:'About section goes here.',
+    portfolio:'About section goes here.',
+  }
+
+  const clickHandle = (name : string) =>{
+    if (expandedItem){
+      setExpandedItem(null)
+      setContainerStyle({})
+    } else {
+      setExpandedItem(name)
+      setContainerStyle({gap:'0px', gridTemplateColumns: '0px 210px'})
+    }
   }
 
   return (
     <div id='project-list'>
-        <div id='project-container' ref={containerElement}>
-          {containerDimensions ? 
-            [<ProjectItem name='Blog Site' 
+        <div id='project-container' style={containerStyle}>
+            <ProjectItem name='Blog Site' 
               video='#' 
               repo='#' 
               about={about.blog} 
               thumbnail={blogThumbnail} 
               expandedItem={expandedItem}
-              setExpandedItem={setExpandedItem}
-              containerDimensions={containerDimensions}
+              clickHandle={clickHandle}
               key='1'
-            />,
+            />
             <ProjectItem name='Lightbulb Controller' 
               video='#' 
               repo='#' 
               about={about.lightbulb} 
               thumbnail={lightbulbThumb}
               expandedItem={expandedItem}
-              setExpandedItem={setExpandedItem}
-              containerDimensions={containerDimensions}
+              clickHandle={clickHandle}
               key='2'
-            />,
+            />
             <ProjectItem name='CI with Kubernetes/Jenkins' 
               video='#' 
               repo='#' 
               about={about.devops} 
               thumbnail={devopsThumb}
               expandedItem={expandedItem}
-              setExpandedItem={setExpandedItem}
-              containerDimensions={containerDimensions}
+              clickHandle={clickHandle}
               key='3'
-            />]
-          : null}
+            />
             {/* <ProjectItem name='Portfolio Site' 
               video='#' 
               repo='#' 
               about={about.portfolio} 
               expandedItem={expandedItem}
               setExpandedItem={setExpandedItem}
-              containerDimensions={containerDimensions}
             /> */}
         </div>
     </div>

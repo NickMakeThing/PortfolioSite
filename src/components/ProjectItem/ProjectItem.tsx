@@ -9,62 +9,58 @@ type propTypes = { //use context or put in file in same folder and import
   about : string,
   thumbnail ?: string,
   expandedItem : string | null,
-  setExpandedItem : React.Dispatch<React.SetStateAction<string | null>>,
-  containerDimensions : DOMRect //need to change
+  clickHandle : (name: string) => void,
 }
 /*
 todo:
- 
+  bug: about section opacity transition simple does not happen, but opacity does change instantly
+
+  make about section appear after small delay
+
+  make it so clicking anywhere else outside of the items minimizes them back to normal
+  
+  make it so right column item is pushed to the side instead of going under when clicking on left
 */
+
 function ProjectItem(props: propTypes) {
   const [nameOpacity, setNameOpacity] = useState<React.CSSProperties>({opacity:0})
   const nameStyle : React.CSSProperties = {...nameOpacity}
   const itemStyle : React.CSSProperties = {}
-  const aboutStyle : React.CSSProperties = {display:'none'}
+  const aboutStyle : React.CSSProperties = {}
   const backgroundStyle : React.CSSProperties = {}
   const thumbnailRef = useRef<HTMLImageElement>(null!)
-  const itemRef = useRef<HTMLImageElement>(null!)
+  const aboutRef = useRef<HTMLImageElement>(null!)
 
-  const clickHandle = () =>{//can move this up to parent
-    if (props.expandedItem){
-      props.setExpandedItem(null)
-    } else {
-      props.setExpandedItem(props.name)
-    }
-  }
   const hoverHandle = (opacity : number) => {
     if (!itemStyle.height){
       setNameOpacity({opacity:opacity})
     }
   }
+
   useEffect(()=>{
     if (props.expandedItem == props.name){
       setTimeout(()=>{ 
         //may want to make it so the blur does not go away here since text is a bit hard to read
         thumbnailRef.current.style.filter = 'blur(0px)'
       },100)
+      setTimeout(()=>{ 
+        aboutRef.current.style.display = 'block'
+      },500)
     } else {
         thumbnailRef.current.style.filter = ''
+        aboutRef.current.style.display = ''
     }
   },[props.expandedItem])
 
   if (props.expandedItem){
     if (props.expandedItem == props.name){
-      let itemLeft = itemRef.current.getBoundingClientRect().left
-      let itemTop = itemRef.current.getBoundingClientRect().top
-      let containerLeft = props.containerDimensions.left
-      let containerTop = props.containerDimensions.top
-      if(itemTop > containerTop){
-        itemStyle.top = -30
-      }
-      itemStyle.left = containerLeft - itemLeft
       itemStyle.width = '450px'
       itemStyle.height = '450px'
       itemStyle.zIndex = 100;
       nameStyle.transitionDelay = '0.3s'
       nameStyle.height = '70%'
       nameStyle.opacity = 1
-      aboutStyle.display = 'block'
+      aboutStyle.opacity = 1
     } else {
       itemStyle.width = '0px'
       itemStyle.height = '0px'
@@ -72,11 +68,11 @@ function ProjectItem(props: propTypes) {
   }
 
   return (
-    <div className='project-item' style={itemStyle} ref={itemRef}>
+    <div className='project-item' style={itemStyle}>
         <img 
           className='project-thumbnail' 
           src={props.thumbnail} 
-          onClick={clickHandle}
+          onClick={() => props.clickHandle(props.name)}
           onMouseOver={()=>{hoverHandle(1)}}
           onMouseOut={()=>{hoverHandle(0)}}
           style={backgroundStyle}
@@ -84,7 +80,7 @@ function ProjectItem(props: propTypes) {
         /> 
         <div className='project-name' style={nameStyle}>
           {props.name}
-          <div className='project-about' style={aboutStyle}>
+          <div className='project-about' style={aboutStyle} ref={aboutRef}>
             {props.about}
           </div>
         </div>

@@ -7,12 +7,14 @@
     /* border: 1px solid black; */
 }
 
+
 #project-container{
     display:grid;
     grid-template-columns: 210px 210px;
     width:100%;
     /* border: 1px solid red; */
-    /* justify-content:start; */
-    /* align-items:start; */
     gap:30px;
+    transition: gap 0.3s, grid-template-columns 0.3s;
+/* may get rid of gap because without gap looks good too */
 }
+
