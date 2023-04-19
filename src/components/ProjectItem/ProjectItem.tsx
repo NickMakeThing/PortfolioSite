@@ -13,9 +13,12 @@ type propTypes = { //use context or put in file in same folder and import
 }
 /*
 todo:
-  bug: about section opacity transition simple does not happen, but opacity does change instantly
+  add blur or something behind the text without bluring all of the thumbnail
 
-  make about section appear after small delay
+  remove static height of about section and make it only as big as the amount of text requires
+    otherwise center the text without ruining the transition
+  
+  bug: about section opacity transition simple does not happen, but opacity does change instantly
 
   make it so clicking anywhere else outside of the items minimizes them back to normal
   
@@ -29,6 +32,7 @@ function ProjectItem(props: propTypes) {
   const aboutStyle : React.CSSProperties = {}
   const backgroundStyle : React.CSSProperties = {}
   const thumbnailRef = useRef<HTMLImageElement>(null!)
+  const nameRef = useRef<HTMLImageElement>(null!)
   const aboutRef = useRef<HTMLImageElement>(null!)
 
   const hoverHandle = (opacity : number) => {
@@ -40,15 +44,10 @@ function ProjectItem(props: propTypes) {
   useEffect(()=>{
     if (props.expandedItem == props.name){
       setTimeout(()=>{ 
-        //may want to make it so the blur does not go away here since text is a bit hard to read
         thumbnailRef.current.style.filter = 'blur(0px)'
       },100)
-      setTimeout(()=>{ 
-        aboutRef.current.style.display = 'block'
-      },500)
     } else {
         thumbnailRef.current.style.filter = ''
-        aboutRef.current.style.display = ''
     }
   },[props.expandedItem])
 
@@ -58,13 +57,17 @@ function ProjectItem(props: propTypes) {
       itemStyle.height = '450px'
       itemStyle.zIndex = 100;
       nameStyle.transitionDelay = '0.3s'
-      nameStyle.height = '70%'
+      nameStyle.height = '50%'
       nameStyle.opacity = 1
+      nameStyle.backdropFilter='blur(10px)'
+      aboutStyle.marginTop = '10px'
       aboutStyle.opacity = 1
     } else {
       itemStyle.width = '0px'
       itemStyle.height = '0px'
     }
+  } else {
+    aboutStyle.transitionDelay = '0s'
   }
 
   return (
@@ -78,11 +81,11 @@ function ProjectItem(props: propTypes) {
           style={backgroundStyle}
           ref={thumbnailRef}
         /> 
-        <div className='project-name' style={nameStyle}>
+        <div className='project-name' style={nameStyle} ref={nameRef}>
           {props.name}
-          <div className='project-about' style={aboutStyle} ref={aboutRef}>
+          <span className='project-about' style={aboutStyle} ref={aboutRef}>
             {props.about}
-          </div>
+          </span>
         </div>
         <div className='project-links'>
           <ProjectItemLink type={'github'} link={props.repo}/>

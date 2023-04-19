@@ -9,10 +9,14 @@ import './ProjectList.css'
 function ProjectList() {
   const [expandedItem,setExpandedItem] = useState<string | null>(null)
   const [containerStyle, setContainerStyle] = useState<React.CSSProperties>({})
+  /*
+  todo:
+    add more details in the about sections
+  */
   const about = {
-    blog:'About section goes here.',
-    lightbulb:'About section goes here.',
-    devops:'About section goes here.',
+    blog:'A simple React/Django blog website. This repo is for the frontend of the site. The site has list and detail views, which the user can switch between without reloading the page. It has a search feature that searches for blog posts by title content. The site primarily uses Ajax for fetching blog data. While this project includes code for both frontend and backend, the focus was mostly on the frontend.',
+    lightbulb:'This is a Vue/Django project that enables a user to remotely control the colour of a Genio smart light. The color picker on the frontend is not an imported component and was coded by myself using the JavaScript and the Vue framework.',
+    devops:'This project uses Jenkins, Docker and Kubernetes to automate deployments for when changes in code are made. A simple webpage was built and used to test the pipeline.',
     portfolio:'About section goes here.',
   }
 
@@ -24,14 +28,14 @@ function ProjectList() {
       setExpandedItem(name)
       setContainerStyle({gap:'0px', gridTemplateColumns: '0px 210px'})
     }
-  }
-
+  } 
+  
   return (
     <div id='project-list'>
         <div id='project-container' style={containerStyle}>
             <ProjectItem name='Blog Site' 
               video='#' 
-              repo='#' 
+              repo='https://github.com/NickMakeThing/LightController' 
               about={about.blog} 
               thumbnail={blogThumbnail} 
               expandedItem={expandedItem}
@@ -40,7 +44,7 @@ function ProjectList() {
             />
             <ProjectItem name='Lightbulb Controller' 
               video='#' 
-              repo='#' 
+              repo='https://github.com/NickMakeThing/HealthStrategyFront' 
               about={about.lightbulb} 
               thumbnail={lightbulbThumb}
               expandedItem={expandedItem}
