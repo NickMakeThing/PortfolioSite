@@ -1,19 +1,45 @@
+/* need to put 'Projects' heading above the squares 
+and put 'click for more information' under that
+also put technology icons for each one like react, etc.
+*/
+
 .project-item-link{
     display:flex;
-    justify-content:center;
     align-items:center;
+    overflow:hidden;
     width:25px;
     height:25px;
-    border-top-left-radius:5px;
-    border-top-right-radius:5px;
+    border-radius: 5px;
     cursor:pointer;
     opacity:0.7;
+    margin-bottom: 5%;
+    transition: width 0.3s, height 0.3s;
+    padding:1px;
+    /* border: solid 1px red; */
+}
+
+.project-item-link:nth-child(odd){
+    color:black;
+    background:white;
+}
+
+.project-item-link:nth-child(even){
+    color:white;
+    background:black;
 }
 
 .project-item-link:hover{
     opacity:1;
 }
 
-.link-image{
-    width:90%;
+.link-name{
+    visibility:hidden;
+    margin-left:3px;
+    width:0px;
 }
+
+
+/* .link-image{
+    width:90%;
+} */
+

@@ -34,6 +34,7 @@ function ProjectItem(props: propTypes) {
   const thumbnailRef = useRef<HTMLImageElement>(null!)
   const nameRef = useRef<HTMLImageElement>(null!)
   const aboutRef = useRef<HTMLImageElement>(null!)
+  var scaleLinks = false
 
   const hoverHandle = (opacity : number) => {
     if (!itemStyle.height){
@@ -51,8 +52,10 @@ function ProjectItem(props: propTypes) {
     }
   },[props.expandedItem])
 
+  
   if (props.expandedItem){
     if (props.expandedItem == props.name){
+      scaleLinks = true
       itemStyle.width = '450px'
       itemStyle.height = '450px'
       itemStyle.zIndex = 100;
@@ -88,9 +91,9 @@ function ProjectItem(props: propTypes) {
           </span>
         </div>
         <div className='project-links'>
-          <ProjectItemLink type={'github'} link={props.repo}/>
-          <ProjectItemLink type={'video'} link={props.video}/>
-          <ProjectItemLink type={'website'} link={props.video}/>
+          <ProjectItemLink type={'github'} link={props.repo} scaleLinks={scaleLinks}/>
+          <ProjectItemLink type={'video'} link={props.video} scaleLinks={scaleLinks}/>
+          <ProjectItemLink type={'website'} link={props.video} scaleLinks={scaleLinks}/>
           {/* about button */}
         </div>
         {/* about section */}
