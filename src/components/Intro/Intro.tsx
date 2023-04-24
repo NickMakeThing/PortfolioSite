@@ -27,7 +27,7 @@ function Intro() {
         </h1>
         <div id='intro-details'>
             <p id='description'>
-                i am nick. i am so good. you should hire me. look at all my projects. i will make projects for you in exchange for money. i really like money because i can buy things with it. something something something something something. i am just writing here to create place-holder text.
+                Learn about my personal projects by clicking the images on the right. Listed below this paragraph are some tools that my skillset includes. More skills and project details can be found in my resume.
             </p>
             <div id='skill-set'>
                 <TechIcon image={pythonImg} name='python' />

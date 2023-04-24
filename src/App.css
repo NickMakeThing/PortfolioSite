@@ -5,8 +5,8 @@ bug: when i add drop shadow, multiple bugs occur in firefox.
 */
 #app {
   background:linear-gradient(
-    rgba(49,51,56,1) 79%, 
-  rgba(49,51,56,1) 80%, 
+  rgba(49,51,56,1) 79%, 
+  rgba(49,51,56,1) 80.09%, 
     transparent 80.1%, 
     transparent 100%
   );
