@@ -13,10 +13,29 @@ h1 {
     line-height: 120%;
     font-family:'NunitoSans Bold';
     font-size: 300%;
-    margin-top: 0;
+    margin-top: -4px;
     margin-bottom: 0;
 }
 
 p {
-    margin-top:21;
+    line-height: 170%;
+    margin:0;
 }
+
+#intro-details{
+    margin-top:18px;
+}
+
+#skill-set {
+    display:grid;
+    grid-template-columns: 1fr 1fr 1fr 1fr;
+    gap:25px;
+    margin-bottom:21px;
+    margin-top:21px;
+    /* do i want the gap? */
+}
+
+#intro-links{
+
+}
+

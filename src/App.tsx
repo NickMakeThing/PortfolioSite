@@ -6,13 +6,14 @@ import ProjectList from './components/ProjectList/ProjectList'
 import './App.css'
 
 function App() {
-  const [count, setCount] = useState(0)
-
   return (
-    <div id='app'> 
-      <Intro />
-      <ProjectList />
-    </div>
+      <div id='app'> 
+        <Intro />
+        <ProjectList />
+        <div id='triangle-container'>
+          <div id='triangle'></div>
+        </div>
+      </div>
   )
 }
 

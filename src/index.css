@@ -3,8 +3,8 @@
   src: url("./src/assets/fonts/NunitoSans-Regular.ttf");
 }
 :root{
-  background-color :rgb(49,51,56);
   color: rgb(219,222,225);
+  /* background:rgb(219,222,225); */
   font-family: 'NunitoSans';
 }
 

@@ -28,8 +28,9 @@ function ProjectItemLink(props : propTypes) {
   const mouseOverHandle = ()=>{
     //find the shorthand for doing this
     const linkStylesCopy = {...linkStyles}
-    const fontSize = props.scaleLinks ? '200%' : ''
-    linkStylesCopy.name = {visibility:'visible',fontSize} 
+    const fontSize = props.scaleLinks ? '210%' : ''
+    const marginLeft = props.scaleLinks ? '7px' : ''
+    linkStylesCopy.name = {visibility:'visible',fontSize,marginLeft} 
     linkStylesCopy.containerExpand = true
     setLinkStyles(linkStylesCopy)
   }

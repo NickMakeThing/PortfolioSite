@@ -1,0 +1,22 @@
+.intro-link {
+    display: inline-flex;
+    /* align-items:center; */
+    color: rgba(49,51,56,1);
+    padding: 10px;
+    padding-left: 15px;
+    padding-right: 15px;
+    border-radius:5px;
+    border: solid 1px black;
+    /* keep or remove border (?) */
+    margin-right: 15px; 
+    /* replace margin-right line by using flex in parent */
+    background: rgb(219,222,225);
+    cursor: pointer;
+    box-shadow: 0 1px 2px 1px rgba(0,0,0,0.2), 1px 2px 3px 2px rgba(67,107,227,0.1);
+    transition: 0.1s;
+}
+
+.intro-link:hover {
+    background: rgb(238,241,245);
+    /* transform: scale(1.05) */
+}

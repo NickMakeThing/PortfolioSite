@@ -1,0 +1,15 @@
+.tech-icon{
+    display:flex;
+    align-items:center;
+}
+.icon-circle{
+    display:inline-flex;
+    justify-content:center;
+    align-items:center;
+    background:rgba(0, 0, 0, 0.21);
+    height:50px;
+    width:50px;
+    clip-path: circle();
+    margin-right:12px;
+
+}
