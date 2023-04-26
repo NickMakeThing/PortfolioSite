@@ -4,6 +4,9 @@ bug: when i add drop shadow, multiple bugs occur in firefox.
   potential fix: can try put a dedicated seperator div below everything else and put the polygon/drop shadowcss on that
 */
 #app {
+  display:flex;
+  align-items:center;
+  justify-content:center;
   background:linear-gradient(
   rgba(49,51,56,1) 79%, 
   rgba(49,51,56,1) 80.09%, 
@@ -12,9 +15,12 @@ bug: when i add drop shadow, multiple bugs occur in firefox.
   );
   /* filter: drop-shadow(0 2px 5px rgba(0,0,0,0.6)); */
   height:100vh; 
+
+  
+}
+
+#main-container{
   display:flex;
-  align-items:center;
-  justify-content:center;
   gap:30px;
 }
 

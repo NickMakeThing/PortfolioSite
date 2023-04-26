@@ -14,10 +14,9 @@ function ProjectList() {
     add more details in the about sections
   */
   const about = {
-    blog:'A simple React/Django blog website. This repo is for the frontend of the site. The site has list and detail views, which the user can switch between without reloading the page. It has a search feature that searches for blog posts by title content. The site primarily uses Ajax for fetching blog data. While this project includes code for both frontend and backend, the focus was mostly on the frontend.',
-    lightbulb:'This is a Vue/Django project that enables a user to remotely control the colour of a Genio smart light. The color picker on the frontend is not an imported component and was coded by myself using the JavaScript and the Vue framework.',
+    blog:'A simple React/Django blog website. The site has list and detail views, which can be switched between without page reloads. It has a search feature that searches by title. The site primarily uses AJAX to deliver content.',
+    lightbulb:'This is a fullstack application, which provides remote control and automation of a smart light. The colour picker in this project is notable as it is not an imported component.',
     devops:'This project uses Jenkins, Docker and Kubernetes to automate deployments for when changes in code are made. A simple webpage was built and used to test the pipeline.',
-    portfolio:'About section goes here.',
   }
 
   const clickHandle = (name : string) =>{
@@ -34,39 +33,35 @@ function ProjectList() {
     <div id='project-list'>
         <div id='project-container' style={containerStyle}>
             <ProjectItem name='Blog Site' 
-              video='#' 
+              video='https://streamable.com/ax8xlc' 
               repo='https://github.com/NickMakeThing/LightController' 
               about={about.blog} 
               thumbnail={blogThumbnail} 
               expandedItem={expandedItem}
               clickHandle={clickHandle}
+              techStack={['react','django','postgres']}
               key='1'
             />
             <ProjectItem name='Lightbulb Controller' 
-              video='#' 
+              video='https://streamable.com/b3h1hy' 
               repo='https://github.com/NickMakeThing/HealthStrategyFront' 
               about={about.lightbulb} 
               thumbnail={lightbulbThumb}
               expandedItem={expandedItem}
               clickHandle={clickHandle}
+              techStack={['vue','django']}
               key='2'
             />
             <ProjectItem name='CI with Kubernetes/Jenkins' 
-              video='#' 
-              repo='#' 
+              video='https://streamable.com/oku2gb' 
+              repo='https://github.com/NickMakeThing/DevOps-SimpleBlog' 
               about={about.devops} 
               thumbnail={devopsThumb}
               expandedItem={expandedItem}
               clickHandle={clickHandle}
+              techStack={['docker','kubernetes','jenkins','bash','githubActions']}
               key='3'
             />
-            {/* <ProjectItem name='Portfolio Site' 
-              video='#' 
-              repo='#' 
-              about={about.portfolio} 
-              expandedItem={expandedItem}
-              setExpandedItem={setExpandedItem}
-            /> */}
         </div>
     </div>
   )

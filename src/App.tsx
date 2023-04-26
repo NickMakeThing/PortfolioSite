@@ -8,8 +8,11 @@ import './App.css'
 function App() {
   return (
       <div id='app'> 
-        <Intro />
-        <ProjectList />
+        {/* come back and check if main-container is redundant */}
+        <div id='main-container'>
+          <Intro />
+          <ProjectList />
+        </div>
         <div id='triangle-container'>
           <div id='triangle'></div>
         </div>

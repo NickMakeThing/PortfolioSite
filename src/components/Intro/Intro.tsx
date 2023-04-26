@@ -30,14 +30,14 @@ function Intro() {
                 Learn about my personal projects by clicking the images on the right. Listed below this paragraph are some tools that my skillset includes. More skills and project details can be found in my resume.
             </p>
             <div id='skill-set'>
-                <TechIcon image={pythonImg} name='python' />
-                <TechIcon image={typescriptImg} name='typescript' />
-                <TechIcon image={reactImg} name='react' />
-                <TechIcon image={vueImg} name='vue' />
-                <TechIcon image={nginxImg} name='nginx' />
-                <TechIcon image={postgresImg} name='postgres' />
-                <TechIcon image={djangoImg} name='django' />
-                <TechIcon image={bashImg} name='bash' />
+                <TechIcon name='python' label={true} />
+                <TechIcon name='typescript' label={true} />
+                <TechIcon name='react' label={true} />
+                <TechIcon name='vue' label={true} />
+                <TechIcon name='nginx' label={true} />
+                <TechIcon name='postgres' label={true} />
+                <TechIcon name='django' label={true} />
+                <TechIcon name='bash' label={true} />
             </div>
             <div id='intro-links'>
                 <IntroLink type={'Github'} icon={faGithub} link={'https://github.com/NickMakeThing'}/>

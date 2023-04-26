@@ -24,7 +24,9 @@ function ProjectItemLink(props : propTypes) {
     name:{},
     containerExpand:false
   })
-
+  const fixName = (name:string) => {
+    return name[0].toUpperCase() + name.slice(1) 
+  }
   const mouseOverHandle = ()=>{
     //find the shorthand for doing this
     const linkStylesCopy = {...linkStyles}
@@ -42,10 +44,11 @@ function ProjectItemLink(props : propTypes) {
   }
   
   const getLinkDimensions = (expandedWidth : string) => {
-    const containerStyle : React.CSSProperties = {width:'25px',height:'25px'}
+    const containerStyle : React.CSSProperties = {width:'25px',height:'25px',padding:'3px'}
     if (props.scaleLinks) {
       containerStyle.width = '50px'
       containerStyle.height = '50px'
+      containerStyle.padding = '5px' //and make height width both 50px 
     }
     if (linkStyles.containerExpand) {
       containerStyle.width = expandedWidth
@@ -85,10 +88,12 @@ function ProjectItemLink(props : propTypes) {
     <div className='project-item-link' 
       style={containerStyle}
       onMouseOver={mouseOverHandle}
-      onMouseLeave={mouseLeaveHandle}>
+      onMouseLeave={mouseLeaveHandle}
+      onClick={()=>{window.open(props.link)}}
+      >
         <FontAwesomeIcon icon={icon} size='lg' style={iconStyle()}/> 
         <span className='link-name' style={linkStyles.name}>
-          {props.type}
+          {fixName(props.type)}
         </span> 
          {/* code, demo, link */}
 

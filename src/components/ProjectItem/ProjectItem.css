@@ -53,10 +53,18 @@
     overflow:hidden;
 }
 
+.project-stack{
+    display:flex;
+    justify-content:center;
+    margin-top:10px;
+}
+
 .project-links{
     display:flex;
     width:100%;
     justify-content:space-evenly;
     position:absolute;
     bottom:0px;
+    pointer-events: none;
 }
+

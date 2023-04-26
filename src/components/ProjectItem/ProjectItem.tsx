@@ -1,28 +1,24 @@
 import { useState, useEffect, useRef } from 'react'
 import ProjectItemLink from '../ProjectItemLink/ProjectItemLink'
 import './ProjectItem.css'
+import TechIcon from '../TechIcon/TechIcon'
 
 type propTypes = { //use context or put in file in same folder and import
   name : string,
   repo : string,
   video : string,
+  website ?: string,
   about : string,
   thumbnail ?: string,
   expandedItem : string | null,
   clickHandle : (name: string) => void,
+  techStack : string[],
 }
 /*
 todo:
-  add blur or something behind the text without bluring all of the thumbnail
-
-  remove static height of about section and make it only as big as the amount of text requires
-    otherwise center the text without ruining the transition
-  
-  bug: about section opacity transition simple does not happen, but opacity does change instantly
 
   make it so clicking anywhere else outside of the items minimizes them back to normal
   
-  make it so right column item is pushed to the side instead of going under when clicking on left
 */
 
 function ProjectItem(props: propTypes) {
@@ -35,6 +31,13 @@ function ProjectItem(props: propTypes) {
   const nameRef = useRef<HTMLImageElement>(null!)
   const aboutRef = useRef<HTMLImageElement>(null!)
   var scaleLinks = false
+
+  const createIconArray = () => {
+    return props.techStack.map(iconName => {
+      let id : string = iconName + Math.random() 
+      return <TechIcon name={iconName} key={id}/>
+    })
+  }
 
   const hoverHandle = (opacity : number) => {
     if (!itemStyle.height){
@@ -88,15 +91,17 @@ function ProjectItem(props: propTypes) {
           {props.name}
           <span className='project-about' style={aboutStyle} ref={aboutRef}>
             {props.about}
+            <div className='project-stack'>
+              {createIconArray()}
+            </div>
           </span>
         </div>
         <div className='project-links'>
           <ProjectItemLink type={'github'} link={props.repo} scaleLinks={scaleLinks}/>
           <ProjectItemLink type={'video'} link={props.video} scaleLinks={scaleLinks}/>
-          <ProjectItemLink type={'website'} link={props.video} scaleLinks={scaleLinks}/>
-          {/* about button */}
+          {props.website ? <ProjectItemLink type={'website'} link={props.website} scaleLinks={scaleLinks}/> : ''}
         </div>
-        {/* about section */}
+        
     </div>
   )
 }
