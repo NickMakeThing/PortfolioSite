@@ -1,6 +1,12 @@
 @font-face{
     font-family: 'NunitoSans Bold';
-    src: url("./src/assets/fonts/NunitoSans-Bold.ttf");
+    src: url("../../assets/NunitoSans-Bold.ttf");
+    /*  
+    have to change this for run build: from 
+        "./src/assets/NunitoSans-Bold.ttf"
+    to
+        "../../assets/NunitoSans-Bold.ttf"
+    */
 }
 
 #intro {
@@ -35,7 +41,15 @@ p {
     /* do i want the gap? */
 }
 
-#intro-links{
-
+@media only screen and (max-width: 640px) {
+    #intro {
+        width: 400px;
+        height: 500px;
+        transform:scale(0.8)
+        /* border:solid 1px black; */
+    }
+    #skill-set {
+        grid-template-columns:1fr 1fr;
+    }
 }
 

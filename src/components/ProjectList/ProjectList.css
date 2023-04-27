@@ -18,3 +18,9 @@
 /* may get rid of gap because without gap looks good too */
 }
 
+@media only screen and (max-width: 640px) {
+    #project-list{
+        
+        transform:scale(0.8)
+    }
+}

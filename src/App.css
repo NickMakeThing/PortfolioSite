@@ -1,8 +1,20 @@
-/* 
-bug: when i add drop shadow, multiple bugs occur in firefox.
-  eg: the third project item disappears when I expand one of the others. 
-  potential fix: can try put a dedicated seperator div below everything else and put the polygon/drop shadowcss on that
-*/
+@font-face{
+  font-family: 'NunitoSans';
+  src: url("assets/NunitoSans-Regular.ttf");
+  /* 
+  have to change this for run build: from 
+    "./src/assets/NunitoSans-Regular.ttf"
+  to
+    "assets/NunitoSans-Regular.ttf"
+  */
+}
+:root{
+  color: rgb(219,222,225);
+  font-family: 'NunitoSans';
+}
+
+
+
 #app {
   display:flex;
   align-items:center;
@@ -13,10 +25,7 @@ bug: when i add drop shadow, multiple bugs occur in firefox.
     transparent 80.1%, 
     transparent 100%
   );
-  /* filter: drop-shadow(0 2px 5px rgba(0,0,0,0.6)); */
-  height:100vh; 
-
-  
+  height:100vh;  
 }
 
 #main-container{
@@ -40,14 +49,80 @@ bug: when i add drop shadow, multiple bugs occur in firefox.
   height:20vh;
   width:100%;
   clip-path: polygon( 0 0, 102vw 0, 0 150% );  
-  /* 
-  clip-path: polygon( 0 0, 100% 0, 100% 100%, 0 100% );
-  clip-path: polygon( 0 0, 102vw 0, 0 100% );  
-  clip-path: polygon( 0 0, 102vw 0, 0 150% );  
-  can also have it go higher so some of the white sits under one of the projectitems, but requires messing with more css
-  */
 }
 
 body{
-  margin:0
+  margin:0;
+  overflow-x: hidden;
+}
+
+@media only screen and (max-width: 1090px) {
+  /* should remove vertical scroll bar too */
+  #app{
+    padding-top:4vh;
+    padding-bottom:4vh;
+    background:linear-gradient(
+      rgba(49,51,56,1) 42%, 
+      rgba(49,51,56,1) 43.09%, 
+        transparent 43.1%, 
+        transparent 100%
+      );
+  }
+
+  #main-container{
+    flex-direction: column;
+    align-items:center;
+  }
+  #triangle-container{
+    height:53.5vh;
+    filter: drop-shadow(0 2px 5px rgba(0,0,0,0.6)); 
+  }
+  #triangle {
+    height:53.5vh;
+    clip-path: polygon( 0 0, 102vw 0, 0 20% );  
+  }
+}
+
+@media only screen and (max-width: 640px) {
+  #app{
+    padding-top:0vh;
+    padding-bottom:0vh;
+    background:linear-gradient(
+      rgba(49,51,56,1) 51%, 
+      rgba(49,51,56,1) 52.09%, 
+        transparent 52.1%, 
+        transparent 100%
+      );
+  }
+  #main-container{
+    transform:scale(0.8);
+    gap:100px;
+  }
+  #triangle-container{
+    height:48vh;
+  }
+  #triangle {
+    height:48vh;
+    clip-path: polygon( 0 0, 102vw 0, 0 15% );  
+  }
+}
+
+@media only screen and (max-height: 770px) {
+  #main-container{
+    padding-top:5vh;
+  }
+}
+@media only screen and (max-height: 700px) {
+  #app{
+    padding-top:10vh;
+    background:linear-gradient(
+      rgba(49,51,56,1) 62%, 
+      rgba(49,51,56,1) 63.09%, 
+        transparent 63.1%, 
+        transparent 100%
+      );
+  }
+  #triangle, #triangle-container {
+    height:30.7vh;
+  }
 }
