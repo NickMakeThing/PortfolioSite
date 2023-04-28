@@ -6,17 +6,5 @@ import { viteStaticCopy } from 'vite-plugin-static-copy'
 export default defineConfig({
   plugins: [
     react(),
-    // viteStaticCopy({
-    //   targets: [
-    //     // {
-    //     //   src: './src/assets/NunitoSans-Bold.ttf',
-    //     //   dest: 'assets'
-    //     // },
-    //     // {
-    //     //   src: './src/assets/NunitoSans-Regular.ttf',
-    //     //   dest: 'assets'
-    //     // },
-    //   ]
-    // })
   ],
 })

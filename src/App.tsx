@@ -1,20 +1,25 @@
 import { useState } from 'react'
 import Intro from './components/Intro/Intro'
 import ProjectList from './components/ProjectList/ProjectList'
-// import reactLogo from './assets/react.svg'
-// import viteLogo from '/vite.svg'
 import './App.css'
 
 function App() {
+  const system = navigator.userAgent
+  const triangleStyle : React.CSSProperties = {}
+  const mobileBrowser = false
+  if (system.includes('Mobile') && !system.includes('DuckDuckGo')){
+    triangleStyle.clipPath = 'polygon( 0 0, 102vw 0, 102vw 82%, 0 86% )'
+  } else if (system.includes('DuckDuckGo')) {
+    triangleStyle.clipPath = 'polygon( 0 0, 102vw 0, 102vw 73%, 0 77% )'
+  }
   return (
       <div id='app'> 
-        {/* come back and check if main-container is redundant */}
         <div id='main-container'>
           <Intro />
           <ProjectList />
         </div>
         <div id='triangle-container'>
-          <div id='triangle'></div>
+          <div id='triangle' style={triangleStyle}></div>
         </div>
       </div>
   )
