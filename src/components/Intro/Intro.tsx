@@ -24,9 +24,7 @@ function Intro(props : propTypes) {
         <div id='intro'> 
             <h1 id='intro-heading'>
                 Nick's Web Development Portfolio
-                {/* {window.innerWidth} */}
             </h1>
-            {/* {navigator.userAgent} */}
             <div id='intro-details'>
                 <p id='description'>
                     Learn about my personal projects by {textBasedOnScreenWidth()}. Listed below this paragraph are some tools that my skillset includes. More skills and project details can be found in my resume.

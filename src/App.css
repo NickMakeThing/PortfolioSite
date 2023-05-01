@@ -8,29 +8,36 @@
     "assets/NunitoSans-Regular.ttf"
   */
 }
+
 :root{
   color: rgb(219,222,225);
   font-family: 'NunitoSans';
 }
+
+body{
+  margin:0;
+}
+
 #app {
   display:flex;
+  min-height:100vh;
   align-items:center;
   justify-content:center;
 }
 
 #main-container{
   display:flex;
+  height:'455px';
+  gap:30px;
 }
+
 #separator{
   position:relative;
   top:-37px;
   height:40px;
   width:100%;
-  /* background:cyan;  */
-  /*
-  font-size: 80%;
-  color:green;
-  line-height:100px; */
+  display:none;
+  /* background:cyan; */
 }
 #triangle-container{
   z-index:-1;
@@ -45,22 +52,22 @@
   background:rgba(49,51,56,1);
   width:100%;
   height:100%;
-}
-
-body{
-  margin:0;
+  clip-path: polygon( 0 0, 102vw 0, 102vw 80%, 0 110% )
 }
 
 @media only screen and (max-width: 1090px) {
-  /* should remove vertical scroll bar too */
   #app{
     padding-top:4vh;
     padding-bottom:4vh;
   }
-
+  #separator{
+    display:block;
+  }
   #main-container{
+    height:auto;
     flex-direction: column;
     align-items:center;
+    gap:0px;
   }
 }
 
@@ -80,3 +87,7 @@ body{
   }  
 }
 
+@media (pointer:none), (pointer:coarse) {
+  /* for checking if device is phone */
+}
+  
