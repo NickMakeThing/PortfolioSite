@@ -5,43 +5,21 @@ import { faClipboard } from '@fortawesome/free-regular-svg-icons'
 import { faGithub } from '@fortawesome/free-brands-svg-icons'
 import './Intro.css'
 
-type windowForm = 'wide'|'narrow'
-function Intro() {
-    // could make this way shorter by just setting state to the width in useEffect
-    // and then a single if statement that decides the content
-    const [windowState, setWindowState] = useState<windowForm>(
-        window.innerWidth > 1090 ? 'wide' : 'narrow'
-    )
+type propTypes = {
+    windowWidth: number
+}
+
+function Intro(props : propTypes) {
+
     const textBasedOnScreenWidth = () => {
-        if (windowState == 'narrow') {
+        if (props.windowWidth <= 1090) {
             return 'scrolling down and clicking the images'
         } else {
             return 'clicking the images on the right'
         }
     }
     // using ref so event listener can see state updates
-    const windowStateRef = useRef(windowState)
-    const setStateForListener = (state : windowForm) => {
-        windowStateRef.current = state
-        setWindowState(state)  
-    }
-    const adjustContent = (windowWidth : number) =>{ 
-        if (windowWidth <= 1090 && windowStateRef.current != 'narrow'){
-            setStateForListener('narrow')
-        } else if (windowWidth > 1090 && windowStateRef.current != 'wide'){
-            setStateForListener('wide')      
-        }
-    }
-    useEffect(()=>{
-        adjustContent(window.innerWidth,)
-        window.addEventListener('resize',()=>adjustContent(window.innerWidth));
-        return () => {
-          window.removeEventListener('resize',()=>adjustContent(window.innerWidth));
-        };
-        
-    },[])
-    var a = navigator.userAgent.split(';')
-    console.log(a)
+    
     return (
         <div id='intro'> 
             <h1 id='intro-heading'>
