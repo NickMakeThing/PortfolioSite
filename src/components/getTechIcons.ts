@@ -10,7 +10,7 @@ import githubActionsImg from '../assets/githubActions.svg'
 import jenkinsImg from '../assets/jenkins.svg'
 import dockerImg from '../assets/docker.svg'
 import kubernetesImg from '../assets/kubernetes.svg'
-
+import AWSs3 from '../assets/AWSs3.svg'
 const icons : {[key: string]: string} = {
     'python' : pythonImg, 
     'react' : reactImg, 
@@ -24,6 +24,7 @@ const icons : {[key: string]: string} = {
     'docker' : dockerImg,
     'kubernetes' : kubernetesImg,
     'jenkins' : jenkinsImg,
+    'AWSs3' : AWSs3,
 } 
 
 export default icons

@@ -34,17 +34,17 @@ function ProjectList() {
         <div id='project-container' style={containerStyle}>
             <ProjectItem name='Blog Site' 
               video='https://streamable.com/ax8xlc' 
-              repo='https://github.com/NickMakeThing/LightController' 
+              repo='https://github.com/NickMakeThing/CrudBlog' 
               about={about.blog} 
               thumbnail={blogThumbnail} 
               expandedItem={expandedItem}
               clickHandle={clickHandle}
-              techStack={['react','django','postgres']}
+              techStack={['react','django','postgres','AWSs3']}
               key='1'
             />
             <ProjectItem name='Lightbulb Controller' 
               video='https://streamable.com/b3h1hy' 
-              repo='https://github.com/NickMakeThing/HealthStrategyFront' 
+              repo='https://github.com/NickMakeThing/LightController' 
               about={about.lightbulb} 
               thumbnail={lightbulbThumb}
               expandedItem={expandedItem}
