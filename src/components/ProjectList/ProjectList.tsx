@@ -33,7 +33,7 @@ function ProjectList() {
     <div id='project-list'>
         <div id='project-container' style={containerStyle}>
             <ProjectItem name='Blog Site' 
-              video='https://streamable.com/ax8xlc' 
+              video='https://streamable.com/bon8ap' 
               repo='https://github.com/NickMakeThing/CrudBlog' 
               about={about.blog} 
               thumbnail={blogThumbnail} 
